@@ -1,20 +1,25 @@
 {
-  "name": "keylink",
+  "name": "@keyology/keylink",
   "version": "1.0.0",
   "bin": {
     "keylink": "./index.js"
   },
   "description": "keylink is a terminal app that converts links to short links and saves them to a json file for you to read and write to. ",
   "main": "index.js",
+  "keywords": ["shortlink", "url", "npm", "cli"],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Keoni Murray",
   "license": "ISC",
   "dependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
     "chalk": "^2.4.2",
     "figlet": "^1.2.1",
     "lowdb": "^1.0.0",
+    "mocha": "^5.2.0",
+    "mock-stdin": "^0.3.1",
     "turl": "^1.1.2"
   }
 }

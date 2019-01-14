@@ -11,6 +11,7 @@ const turl = require('turl');
 const adapter = new FileSync('db.json')
 const db = low(adapter)
 
+
 //list of commands that will be accepted
 const commands = ['new', 'get', 'remove', 'help'];
 
@@ -42,6 +43,7 @@ console.log(figlet.textSync('Keylink', {
     horizontalLayout: 'default',
     verticalLayout: 'default'
 }));
+
 
 const newLink = () => {
     //Will accpet link and turn it into a short link then pass it to the add name function
@@ -154,3 +156,10 @@ switch (args[2]) {
         errorLog(`only one argument can be accepted`);
         help()
 }
+
+module.exports = {
+    remove,
+    getLink,
+    newLink,
+    help
+};
