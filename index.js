@@ -51,18 +51,11 @@ const newLink = () => {
     const link_question = chalk.blue('Please enter a link\n');
 
     prompt(link_question).then(link => {
-        console.log("This is before short link", link);
+        // console.log("This is before short link", link);
         let shortLink = turl.shorten(link).then((res) => {
-            console.log(res);
+            // console.log(res);
             shortLink = res;
-            console.log("This is shortlink reassigned", shortLink);
-
-            // db.get('web_links').push({
-            //     // link: shortLink,
-            //     name: addname(shortLink)
-
-
-            // }).write()
+            // console.log("This is shortlink reassigned", shortLink);
 
             return addname(shortLink)
 
@@ -73,7 +66,7 @@ const newLink = () => {
             console.log(err);
         });
 
-        console.log('link saved');
+        console.log(chalk.green("link saved!"));
 
 
 
@@ -98,6 +91,17 @@ const addname = (linkName) => {
 
     })
 
+}
+
+const getLink = () => {
+    const linksList = db.get('web_links').value()
+    let index = 1;
+
+    linksList.forEach(link => {
+        let linktext = `${index++}. ${link.name}: ${link.link}`
+        console.log(chalk.green(linktext));
+
+    });
 }
 
 
@@ -133,6 +137,7 @@ if (args.length > 3) {
 
 switch (args[2]) {
     case 'help':
+        help()
         break
 
     case 'new':
@@ -140,6 +145,7 @@ switch (args[2]) {
         break
 
     case 'get':
+        getLink()
         break
 
     case 'remove':
