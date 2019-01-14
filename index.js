@@ -35,8 +35,8 @@ const prompt = question => {
 
 
 
-console.log(figlet.textSync('Welcome to Keylink', {
-    font: 'Doom', //Dr Pepper'
+console.log(figlet.textSync('Keylink', {
+    font: 'Dr Pepper', //Doom'
     horizontalLayout: 'default',
     verticalLayout: 'default'
 }));
@@ -44,12 +44,7 @@ console.log(figlet.textSync('Welcome to Keylink', {
 
 
 const newLink = () => {
-
-
-
-
     const link_question = chalk.blue('Please enter a link\n');
-
     prompt(link_question).then(link => {
 
         let shortLink = turl.shorten(link).then((res) => {
@@ -79,11 +74,12 @@ const addname = (linkName) => {
     let name = chalk.blue('please give your link a name example github for github.com\n');
 
 
+
     prompt(name).then(newName => {
 
         db.get('web_links').push({
             link: linkName,
-            name: newName
+            name: newName.replace(/\s/g, '')
 
 
         }).write()
@@ -110,11 +106,13 @@ const getLink = () => {
 const remove = () => {
     // This will remove the link the user saved
     let question = chalk.blue("What is the name of the link you want to remove?\n");
-    question = question.trim();
+
+
+
 
     prompt(question).then(removeLink => {
         db.get('web_links').remove({
-            name: removeLink
+            name: removeLink.replace(/\s/g, '')
 
         }).write()
 
