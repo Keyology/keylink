@@ -57,11 +57,14 @@ const newLink = () => {
             shortLink = res;
             console.log("This is shortlink reassigned", shortLink);
 
-            db.get('web_links').push({
-                link: shortLink
+            // db.get('web_links').push({
+            //     // link: shortLink,
+            //     name: addname(shortLink)
 
 
-            }).write()
+            // }).write()
+
+            return addname(shortLink)
 
 
 
@@ -78,6 +81,24 @@ const newLink = () => {
 
 }
 
+const addname = (linkName) => {
+
+    const name = chalk.blue('please give your link a name example github for github.com\n');
+
+    prompt(name).then(newName => {
+
+        db.get('web_links').push({
+            link: linkName,
+            name: newName
+
+
+        }).write()
+
+
+
+    })
+
+}
 
 
 const help = () => {
