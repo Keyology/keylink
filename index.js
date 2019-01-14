@@ -51,11 +51,11 @@ const newLink = () => {
     const link_question = chalk.blue('Please enter a link\n');
 
     prompt(link_question).then(link => {
-        // console.log("This is before short link", link);
+
         let shortLink = turl.shorten(link).then((res) => {
-            // console.log(res);
+
             shortLink = res;
-            // console.log("This is shortlink reassigned", shortLink);
+
 
             return addname(shortLink)
 
@@ -66,7 +66,7 @@ const newLink = () => {
             console.log(err);
         });
 
-        console.log(chalk.green("link saved!"));
+
 
 
 
@@ -76,7 +76,8 @@ const newLink = () => {
 
 const addname = (linkName) => {
 
-    const name = chalk.blue('please give your link a name example github for github.com\n');
+    let name = chalk.blue('please give your link a name example github for github.com\n');
+
 
     prompt(name).then(newName => {
 
@@ -87,9 +88,11 @@ const addname = (linkName) => {
 
         }).write()
 
+        console.log(chalk.green("link and name saved!"));
 
 
     })
+
 
 }
 
@@ -104,6 +107,23 @@ const getLink = () => {
     });
 }
 
+const remove = () => {
+    // This will remove the link the user saved
+    let question = chalk.blue("What is the name of the link you want to remove?\n");
+    question = question.trim();
+
+    prompt(question).then(removeLink => {
+        db.get('web_links').remove({
+            name: removeLink
+
+        }).write()
+
+    })
+
+
+
+
+}
 
 const help = () => {
 
@@ -149,6 +169,7 @@ switch (args[2]) {
         break
 
     case 'remove':
+        remove()
         break
 
     default:
