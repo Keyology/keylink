@@ -1,12 +1,17 @@
 {
   "name": "@keyology/keylink",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "bin": {
     "keylink": "./index.js"
   },
   "description": "keylink is a terminal app that converts links to short links and saves them to a json file for you to read and write to. ",
   "main": "index.js",
-  "keywords": ["shortlink", "url", "npm", "cli"],
+  "keywords": [
+    "shortlink",
+    "url",
+    "npm",
+    "cli"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
