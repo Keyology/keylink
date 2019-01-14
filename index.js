@@ -4,12 +4,35 @@ const figlet = require('figlet');
 const chalk = require('chalk');
 const args = process.argv;
 const rl = require('readline');
-const low = require('lowdb')
+const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync')
+const turl = require('turl');
 const adapter = new FileSync('db.json')
 const db = low(adapter)
 
 const commands = ['new', 'get', 'remove', 'help'];
+
+db.defaults({
+    web_links: []
+}).write()
+
+const prompt = question => {
+    const r = rl.createInterface({
+        input: process.stdin,
+        output: process.stdout,
+        terminal: false
+    });
+
+    return new Promise((resolve, error) => {
+        r.question(question, answer => {
+            r.close()
+            resolve(answer)
+        });
+    });
+}
+
+
+
 
 
 console.log(figlet.textSync('Welcome to Keylink', {
@@ -17,6 +40,45 @@ console.log(figlet.textSync('Welcome to Keylink', {
     horizontalLayout: 'default',
     verticalLayout: 'default'
 }));
+
+
+
+const newLink = () => {
+
+
+
+
+    const link_question = chalk.blue('Please enter a link\n');
+
+    prompt(link_question).then(link => {
+        console.log("This is before short link", link);
+        let shortLink = turl.shorten(link).then((res) => {
+            console.log(res);
+            shortLink = res;
+            console.log("This is shortlink reassigned", shortLink);
+
+            db.get('web_links').push({
+                link: shortLink
+
+
+            }).write()
+
+
+
+
+        }).catch((err) => {
+            console.log(err);
+        });
+
+        console.log('link saved');
+
+
+
+    })
+
+}
+
+
 
 const help = () => {
 
@@ -48,22 +110,23 @@ if (args.length > 3) {
     help()
 }
 
-switch(args[2]){
-    case 'help': 
-    break
+switch (args[2]) {
+    case 'help':
+        break
 
     case 'new':
-    break
+        newLink()
+        break
 
     case 'get':
-    break 
+        break
 
-    case 'remove': 
-    break
+    case 'remove':
+        break
 
-    default: 
-    errorLog(`only one argument can be accepted`);
-    help()
+    default:
+        errorLog(`only one argument can be accepted`);
+        help()
 
 
 }
