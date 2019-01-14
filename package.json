@@ -1,0 +1,15 @@
+{
+  "name": "keylink",
+  "version": "1.0.0",
+  "description": "keylink is a terminal app that converts links to short links and saves them to a json file for you to read and write to. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Keoni Murray",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "figlet": "^1.2.1"
+  }
+}
