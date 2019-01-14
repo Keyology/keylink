@@ -3,7 +3,13 @@
 const figlet = require('figlet');
 const chalk = require('chalk');
 const args = process.argv;
+const rl = require('readline');
+const low = require('lowdb')
+const FileSync = require('lowdb/adapters/FileSync')
+const adapter = new FileSync('db.json')
+const db = low(adapter)
 
+const commands = ['new', 'get', 'remove', 'help'];
 
 
 console.log(figlet.textSync('Welcome to Keylink', {
@@ -40,4 +46,24 @@ const errorLog = error => {
 if (args.length > 3) {
     errorLog(`only one argument can be accepted`);
     help()
+}
+
+switch(args[2]){
+    case 'help': 
+    break
+
+    case 'new':
+    break
+
+    case 'get':
+    break 
+
+    case 'remove': 
+    break
+
+    default: 
+    errorLog(`only one argument can be accepted`);
+    help()
+
+
 }
