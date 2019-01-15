@@ -10,11 +10,8 @@
 ![](https://img.shields.io/github/license/Keyology/keylink.svg)
 ![](https://img.shields.io/twitter/url/https/github.com/Keyology/keylink.svg?style=social)
 
-
+### How to use Keylink
 ```
-keylink is a tools that lets you save links as short links in
-    a json file that you can read and write to. 
-
     keylink <command> 
 
     commands can be 
