@@ -1,6 +1,10 @@
 # keylink
 
-### keylink is a Cli application that makes saving and finding links so much easier. 
+### keylink is a Cli application that makes saving and finding links easier.
+
+### keylink saves links as short links to make them smaller and easier to share. 
+
+
 
 
 ## How to Install 
