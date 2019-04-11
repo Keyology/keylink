@@ -1,0 +1,10 @@
+clear languange     
+     - "get" => "list"
+     - links => url(s)
+refactor code 
+find link by name given
+after creates new shortlink, adds shortlink to your clipboard
+edit links 
+add carrot cursor
+
+DONE open browser  with "keylink <NAME>"

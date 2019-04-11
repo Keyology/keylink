@@ -9,7 +9,7 @@
 
 ## How to Install 
 
-```npm install @keyology/keylink```
+```npm install -g @keyology/keylink```
 
 ![](https://img.shields.io/github/issues/Keyology/keylink.svg)
 ![](https://img.shields.io/github/forks/Keyology/keylink.svg)
